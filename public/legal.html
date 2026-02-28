@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Terms & Privacy Policy — UniMart</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:      #0f1f6e;
+    --navy-deep: #080f3d;
+    --navy-mid:  #1a2a9a;
+    --orange:    #f97316;
+    --orange-glow: rgba(249,115,22,0.15);
+    --white:     #ffffff;
+    --off:       #f4f6fb;
+    --border:    rgba(15,31,110,0.08);
+    --text:      #0f172a;
+    --text-mid:  #334155;
+    --text-soft: #64748b;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--navy-deep);
+    position: relative;
+    overflow: hidden;
+    padding: 100px 24px 80px;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba(249,115,22,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 80% 30%, rgba(26,42,154,0.6) 0%, transparent 70%);
+  }
+
+  .hero::after {
+    content: 'UNIMART';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 18vw, 180px);
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    letter-spacing: -4px;
+    pointer-events: none;
+  }
+
+  .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+  .hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(249,115,22,0.15);
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-chip::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 span { color: var(--orange); }
+
+  .hero-meta {
+    color: rgba(255,255,255,0.45);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* ── NAV BAR ──────────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 24px;
+    background: rgba(8,15,61,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--orange); }
+
+  .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-back:hover { color: var(--white); }
+  .nav-back::before { content: '←'; font-size: 16px; }
+
+  /* ── LAYOUT ───────────────────────────────────────────────────── */
+  .layout {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 24px;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; gap: 40px; }
+    .sidebar { display: none; }
+  }
+
+  /* ── SIDEBAR ──────────────────────────────────────────────────── */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+  }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 16px;
+  }
+
+  .sidebar-nav { list-style: none; }
+
+  .sidebar-nav li { margin-bottom: 2px; }
+
+  .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-soft);
+    text-decoration: none;
+    transition: all 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    color: var(--navy);
+    background: var(--off);
+    border-left-color: var(--orange);
+  }
+
+  .sidebar-nav .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    transition: background 0.15s;
+  }
+
+  .sidebar-nav a:hover .dot,
+  .sidebar-nav a.active .dot { background: var(--orange); }
+
+  .sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  .sidebar-date {
+    font-size: 12px;
+    color: var(--text-soft);
+    padding: 0 12px;
+  }
+
+  /* ── CONTENT ──────────────────────────────────────────────────── */
+  .content { min-width: 0; }
+
+  /* ── TABS ─────────────────────────────────────────────────────── */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--off);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 56px;
+    width: fit-content;
+  }
+
+  .tab-btn {
+    padding: 10px 24px;
+    border-radius: 9px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--text-soft);
+  }
+
+  .tab-btn.active {
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 2px 12px rgba(15,31,110,0.25);
+  }
+
+  /* ── SECTION ──────────────────────────────────────────────────── */
+  .section {
+    display: none;
+  }
+  .section.active { display: block; }
+
+  /* ── ARTICLE SECTIONS ─────────────────────────────────────────── */
+  .article-section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 100px;
+  }
+
+  .article-section:first-child { padding-top: 0; }
+  .article-section:last-child  { border-bottom: none; }
+
+  .section-number {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .article-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .article-section p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .article-section p:last-child { margin-bottom: 0; }
+
+  /* ── CALLOUT BOXES ────────────────────────────────────────────── */
+  .callout {
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .callout-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .callout-body { flex: 1; }
+
+  .callout-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .callout-text {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .callout.info {
+    background: #eef2ff;
+    border-left: 3px solid var(--navy);
+  }
+  .callout.info .callout-title { color: var(--navy); }
+  .callout.info .callout-text  { color: #3730a3; }
+
+  .callout.warning {
+    background: #fff7ed;
+    border-left: 3px solid var(--orange);
+  }
+  .callout.warning .callout-title { color: #9a3412; }
+  .callout.warning .callout-text  { color: #c2410c; }
+
+  .callout.success {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+  }
+  .callout.success .callout-title { color: #14532d; }
+  .callout.success .callout-text  { color: #166534; }
+
+  /* ── LISTS ────────────────────────────────────────────────────── */
+  .styled-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .styled-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.7;
+  }
+
+  .styled-list li:last-child { border-bottom: none; }
+
+  .styled-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── DATA TABLE ───────────────────────────────────────────────── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .data-table th {
+    background: var(--navy);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: var(--off); }
+
+  /* ── CONTACT CARD ─────────────────────────────────────────────── */
+  .contact-card {
+    background: var(--navy-deep);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    margin-top: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%);
+  }
+
+  .contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .contact-card p {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .contact-link.primary {
+    background: var(--orange);
+    color: white;
+  }
+  .contact-link.primary:hover {
+    background: #ea580c;
+    transform: translateY(-1px);
+  }
+
+  .contact-link.ghost {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .contact-link.ghost:hover {
+    background: rgba(255,255,255,0.14);
+    color: white;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────────── */
+  footer {
+    background: var(--off);
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--text-soft);
+  }
+
+  footer strong { color: var(--navy); }
+
+  /* ── SCROLL PROGRESS ──────────────────────────────────────────── */
+  .progress-bar {
+    position: fixed;
+    top: 60px; left: 0;
+    height: 2px;
+    background: var(--orange);
+    z-index: 99;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ── HIGHLIGHT ────────────────────────────────────────────────── */
+  .hl { color: var(--orange); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Uni<span>Mart</span></a>
+  <a href="/" class="nav-back">Back to UniMart</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-chip">Legal Documents</div>
+    <h1>Terms &amp; <span>Privacy</span><br>Policy</h1>
+    <p class="hero-meta">Effective date: 28 February 2026 &nbsp;·&nbsp; UniMart Ghana</p>
+  </div>
+</div>
+
+<!-- Main layout -->
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <p class="sidebar-label">On this page</p>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-acceptance')" class="active"><span class="dot"></span> Acceptance</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-platform')"><span class="dot"></span> Platform Use</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-sellers')"><span class="dot"></span> Sellers & Listings</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-payments')"><span class="dot"></span> Payments & Verify</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-prohibited')"><span class="dot"></span> Prohibited Use</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-liability')"><span class="dot"></span> Liability</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-termination')"><span class="dot"></span> Termination</a></li>
+      <li><a href="#" onclick="switchTab('terms'); scrollTo('terms-governing')"><span class="dot"></span> Governing Law</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-date">Last updated<br><strong style="color:var(--text-mid)">February 2026</strong></p>
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('terms')">Terms of Service</button>
+      <button class="tab-btn" onclick="switchTab('privacy')">Privacy Policy</button>
+    </div>
+
+    <!-- ═══════════════ TERMS OF SERVICE ═══════════════ -->
+    <div class="section active" id="section-terms">
+
+      <div class="callout info">
+        <div class="callout-icon">📋</div>
+        <div class="callout-body">
+          <div class="callout-title">Please read carefully</div>
+          <div class="callout-text">By creating an account or using UniMart, you agree to these Terms of Service. If you do not agree, please do not use our platform.</div>
+        </div>
+      </div>
+
+      <div class="article-section" id="terms-acceptance">
+        <span class="section-number">01 — Acceptance</span>
+        <h2>Agreement to Terms</h2>
+        <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and <span class="hl">UniMart Ghana</span> ("UniMart," "we," "us," or "our") governing your access to and use of the UniMart website, mobile application, and related services (collectively, the "Platform").</p>
+        <p>By registering an account, posting a listing, or using any feature of the Platform, you confirm that you are at least <span class="hl">16 years of age</span>, are a student or affiliate of a recognised Ghanaian university or institution, and have read and agreed to these Terms.</p>
+      </div>
+
+      <div class="article-section" id="terms-platform">
+        <span class="section-number">02 — Platform Use</span>
+        <h2>About UniMart</h2>
+        <p>UniMart is a campus marketplace that connects student buyers and sellers across Ghanaian universities. We provide the technology and platform; we are <span class="hl">not a party to any transaction</span> between buyers and sellers. UniMart does not own, warehouse, or ship any goods listed on the Platform.</p>
+        <p>We reserve the right to modify, suspend, or discontinue any aspect of the Platform at any time with reasonable notice where possible.</p>
+        <div class="callout warning">
+          <div class="callout-icon">⚠️</div>
+          <div class="callout-body">
+            <div class="callout-title">Transaction Responsibility</div>
+            <div class="callout-text">All transactions are directly between buyers and sellers. UniMart is not responsible for the quality, safety, legality, or availability of items listed, nor for the ability of sellers to sell or buyers to pay.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-section" id="terms-sellers">
+        <span class="section-number">03 — Sellers &amp; Listings</span>
+        <h2>Listing Your Items</h2>
+        <p>As a seller on UniMart, you agree to:</p>
+        <ul class="styled-list">
+          <li>Only list items you own or have the legal right to sell</li>
+          <li>Provide accurate, honest descriptions and real photographs of your items</li>
+          <li>Set fair and transparent prices in Ghana Cedis (GH₵)</li>
+          <li>Respond to buyer enquiries promptly and in good faith</li>
+          <li>Complete transactions you have agreed to with buyers</li>
+          <li>Not list counterfeit, stolen, or prohibited goods</li>
+          <li>Keep your contact information (WhatsApp, etc.) current and accurate</li>
+        </ul>
+        <p>Listings that violate these Terms will be removed without notice. Repeat violations may result in permanent account suspension.</p>
+        <p>Free accounts may post listings that are active for <span class="hl">3 days</span>. Verified (Premium) sellers receive extended visibility of <span class="hl">7 days</span> per listing, along with priority placement in search results.</p>
+      </div>
+
+      <div class="article-section" id="terms-payments">
+        <span class="section-number">04 — Payments &amp; Verification</span>
+        <h2>Verification &amp; Paystack</h2>
+        <p>UniMart offers an optional <span class="hl">Verified Seller</span> badge through a paid verification programme. Verification fees are processed securely via <strong>Paystack</strong>, a licensed payment gateway, and are charged in Ghana Cedis.</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Plan</th><th>Duration</th><th>Price</th><th>Renewal</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Monthly</td><td>30 days</td><td>GH₵ 10</td><td>Manual</td></tr>
+            <tr><td>Quarterly</td><td>90 days</td><td>GH₵ 25</td><td>Manual</td></tr>
+            <tr><td>Annual</td><td>365 days</td><td>GH₵ 80</td><td>Manual</td></tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          <div class="callout-icon">💳</div>
+          <div class="callout-body">
+            <div class="callout-title">Refund Policy</div>
+            <div class="callout-text">Verification fees are non-refundable once processed and the badge has been activated on your account. If you believe a charge was made in error, contact us within 48 hours with your payment reference.</div>
+          </div>
+        </div>
+        <p>Verification does not constitute an endorsement of a seller's character or the quality of their goods. It indicates only that the seller has paid for the programme and their account is in good standing.</p>
+      </div>
+
+      <div class="article-section" id="terms-prohibited">
+        <span class="section-number">05 — Prohibited Use</span>
+        <h2>What You Cannot Do</h2>
+        <p>The following are strictly prohibited on UniMart:</p>
+        <ul class="styled-list">
+          <li>Listing or selling illegal items — drugs, weapons, stolen goods, counterfeit products</li>
+          <li>Harassment, threats, or abusive communication toward other users</li>
+          <li>Creating multiple accounts to evade suspension or inflate trust metrics</li>
+          <li>Posting misleading listings, fake reviews, or fraudulent pricing</li>
+          <li>Scraping, crawling, or otherwise extracting platform data without written permission</li>
+          <li>Impersonating another user, institution, or UniMart staff</li>
+          <li>Using the Platform to conduct scams or advance fraudulent schemes</li>
+          <li>Posting adult, explicit, or age-restricted content of any kind</li>
+        </ul>
+        <p>Violations may result in immediate account suspension and, where required by law, may be reported to relevant authorities.</p>
+      </div>
+
+      <div class="article-section" id="terms-liability">
+        <span class="section-number">06 — Liability</span>
+        <h2>Limitation of Liability</h2>
+        <p>The Platform is provided on an <span class="hl">"as is"</span> and <span class="hl">"as available"</span> basis without warranties of any kind. To the fullest extent permitted by Ghanaian law, UniMart disclaims all implied warranties including merchantability, fitness for a particular purpose, and non-infringement.</p>
+        <p>UniMart shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Platform, including but not limited to loss of data, loss of profits, or losses resulting from transactions between users.</p>
+        <p>Our total liability to you for any claim shall not exceed the amount you paid to UniMart in the <span class="hl">three months preceding</span> the event giving rise to the claim.</p>
+      </div>
+
+      <div class="article-section" id="terms-termination">
+        <span class="section-number">07 — Termination</span>
+        <h2>Account Termination</h2>
+        <p>You may close your account at any time by contacting us. We reserve the right to suspend or permanently terminate accounts that violate these Terms, engage in fraudulent activity, or otherwise harm the UniMart community or other users.</p>
+        <p>Upon termination, your listings will be removed and your personal data will be handled in accordance with our Privacy Policy below. Data retention obligations under Ghanaian law may require us to retain certain records.</p>
+      </div>
+
+      <div class="article-section" id="terms-governing">
+        <span class="section-number">08 — Governing Law</span>
+        <h2>Jurisdiction &amp; Disputes</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of the <span class="hl">Republic of Ghana</span>. Any disputes arising from these Terms or your use of UniMart shall be subject to the exclusive jurisdiction of the courts of Ghana.</p>
+        <p>We encourage you to contact us before initiating any legal action — most issues can be resolved quickly and amicably through direct communication.</p>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════ PRIVACY POLICY ═══════════════ -->
+    <div class="section" id="section-privacy">
+
+      <div class="callout success">
+        <div class="callout-icon">🔒</div>
+        <div class="callout-body">
+          <div class="callout-title">Your privacy matters</div>
+          <div class="callout-text">UniMart collects only what is necessary to run the platform. We do not sell your personal data to third parties, ever.</div>
+        </div>
+      </div>
+
+      <div class="article-section" id="privacy-collect">
+        <span class="section-number">01 — Data We Collect</span>
+        <h2>What We Collect &amp; Why</h2>
+        <table class="data-table">
+          <thead>
+            <tr><th>Data Type</th><th>Examples</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Account Info</strong></td>
+              <td>Name, email, username, school</td>
+              <td>Create and manage your account</td>
+            </tr>
+            <tr>
+              <td><strong>Contact Info</strong></td>
+              <td>WhatsApp number</td>
+              <td>Enable buyers to contact you</td>
+            </tr>
+            <tr>
+              <td><strong>Listing Content</strong></td>
+              <td>Photos, titles, descriptions, prices</td>
+              <td>Display your listings to other users</td>
+            </tr>
+            <tr>
+              <td><strong>Usage Data</strong></td>
+              <td>Clicks, searches, pages viewed</td>
+              <td>Improve platform performance</td>
+            </tr>
+            <tr>
+              <td><strong>Payment Info</strong></td>
+              <td>Transaction reference (not card data)</td>
+              <td>Verify your Verified Seller status</td>
+            </tr>
+            <tr>
+              <td><strong>Device Info</strong></td>
+              <td>Device type, OS, IP address</td>
+              <td>Security and fraud prevention</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>We do <span class="hl">not</span> store raw card numbers or banking credentials. Payment processing is handled entirely by Paystack under their own security certifications.</p>
+      </div>
+
+      <div class="article-section" id="privacy-use">
+        <span class="section-number">02 — How We Use It</span>
+        <h2>How We Use Your Data</h2>
+        <ul class="styled-list">
+          <li>To provide, operate, and improve the UniMart platform</li>
+          <li>To display your profile and listings to other users</li>
+          <li>To send account-related emails (verification, password reset, platform updates)</li>
+          <li>To calculate and display trust scores and click metrics</li>
+          <li>To detect fraud, abuse, and security threats</li>
+          <li>To comply with legal obligations under Ghanaian law</li>
+        </ul>
+        <p>We will never use your data to send unsolicited marketing from third parties or sell your information to advertisers.</p>
+      </div>
+
+      <div class="article-section" id="privacy-sharing">
+        <span class="section-number">03 — Data Sharing</span>
+        <h2>Who Can See Your Data</h2>
+        <p>UniMart operates on a principle of <span class="hl">minimal disclosure</span>. Here is who can see what:</p>
+        <table class="data-table">
+          <thead>
+            <tr><th>Recipient</th><th>What They See</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Other Users</strong></td>
+              <td>Public profile, listings, WhatsApp number (if provided)</td>
+              <td>To enable marketplace transactions</td>
+            </tr>
+            <tr>
+              <td><strong>Supabase</strong></td>
+              <td>All stored data (encrypted)</td>
+              <td>Database and authentication provider</td>
+            </tr>
+            <tr>
+              <td><strong>Paystack</strong></td>
+              <td>Email, payment amount, reference</td>
+              <td>Process verification payments</td>
+            </tr>
+            <tr>
+              <td><strong>Legal Authorities</strong></td>
+              <td>As required by law</td>
+              <td>Compliance with Ghanaian law</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>We do not share your data with any other third parties. Our infrastructure providers (Supabase, Vercel) operate under data processing agreements and appropriate security standards.</p>
+      </div>
+
+      <div class="article-section" id="privacy-rights">
+        <span class="section-number">04 — Your Rights</span>
+        <h2>Your Data Rights</h2>
+        <p>You have the following rights regarding your personal data:</p>
+        <ul class="styled-list">
+          <li><strong>Access</strong> — Request a copy of all personal data we hold about you</li>
+          <li><strong>Correction</strong> — Update inaccurate or incomplete data via your profile settings</li>
+          <li><strong>Deletion</strong> — Request deletion of your account and associated data</li>
+          <li><strong>Portability</strong> — Request your data in a machine-readable format</li>
+          <li><strong>Objection</strong> — Object to processing of your data for specific purposes</li>
+          <li><strong>Withdrawal</strong> — Withdraw consent at any time where consent is the legal basis</li>
+        </ul>
+        <div class="callout info">
+          <div class="callout-icon">📧</div>
+          <div class="callout-body">
+            <div class="callout-title">Exercising Your Rights</div>
+            <div class="callout-text">To exercise any of these rights, email us at <strong>privacy@unimartgh.com</strong>. We will respond within 30 days. Some requests may be subject to legal retention obligations.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-section" id="privacy-storage">
+        <span class="section-number">05 — Storage &amp; Security</span>
+        <h2>Data Storage &amp; Security</h2>
+        <p>Your data is stored on <span class="hl">Supabase</span> infrastructure with encryption at rest and in transit (TLS 1.2+). Access to your data is restricted to authorised UniMart personnel only.</p>
+        <p>We retain your account data for as long as your account is active. If you delete your account, your personal data is removed within <span class="hl">30 days</span>, except where retention is required by law (e.g., payment transaction records for financial compliance).</p>
+        <p>Despite our best efforts, no internet-based service can guarantee absolute security. We encourage you to use a strong, unique password and to not share your login credentials.</p>
+      </div>
+
+      <div class="article-section" id="privacy-cookies">
+        <span class="section-number">06 — Cookies</span>
+        <h2>Cookies &amp; Local Storage</h2>
+        <p>The UniMart web platform uses cookies and browser local storage for the following purposes:</p>
+        <ul class="styled-list">
+          <li><strong>Authentication</strong> — Keeping you logged in across sessions (essential)</li>
+          <li><strong>Preferences</strong> — Remembering your search and filter settings</li>
+          <li><strong>Analytics</strong> — Understanding how pages are used to improve the platform</li>
+        </ul>
+        <p>We do not use third-party advertising cookies. You can clear cookies at any time through your browser settings, though this will log you out of your account.</p>
+      </div>
+
+      <div class="article-section" id="privacy-children">
+        <span class="section-number">07 — Minors</span>
+        <h2>Children's Privacy</h2>
+        <p>UniMart is not intended for users under the age of <span class="hl">16</span>. We do not knowingly collect personal data from children under 16. If we become aware that a child under 16 has created an account, we will delete it promptly. If you believe a minor has registered, please contact us immediately.</p>
+      </div>
+
+      <div class="article-section" id="privacy-changes">
+        <span class="section-number">08 — Policy Changes</span>
+        <h2>Updates to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you via email or a prominent notice within the app at least <span class="hl">14 days</span> before the changes take effect. Your continued use of UniMart after that date constitutes your acceptance of the updated policy.</p>
+        <p>The current version of this policy is always available at <strong>unimartgh.com/privacy</strong>.</p>
+      </div>
+
+    </div>
+
+    <!-- Contact card -->
+    <div class="contact-card">
+      <h3>Questions about your data?</h3>
+      <p>We're a student-built platform and we take your trust seriously. Reach out directly — a real person will respond.</p>
+      <div class="contact-links">
+        <a href="mailto:legal@unimartgh.com" class="contact-link primary">📧 legal@unimartgh.com</a>
+        <a href="https://wa.me/233207779304" class="contact-link ghost">💬 WhatsApp Us</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  <p>&copy; 2026 <strong>UniMart Ghana</strong>. All rights reserved. &nbsp;·&nbsp;
+    Built for Ghanaian students. &nbsp;·&nbsp;
+    <a href="/terms" style="color:var(--navy); font-weight:600;">Terms</a> &nbsp;·&nbsp;
+    <a href="/privacy" style="color:var(--navy); font-weight:600;">Privacy</a>
+  </p>
+</footer>
+
+<script>
+  // ── Tab switching ──────────────────────────────────────────────
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', (i === 0 && tab === 'terms') || (i === 1 && tab === 'privacy'))
+    })
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'))
+    document.getElementById('section-' + tab).classList.add('active')
+    window.scrollTo({ top: document.querySelector('.layout').offsetTop - 80, behavior: 'smooth' })
+  }
+
+  // ── Scroll progress bar ────────────────────────────────────────
+  window.addEventListener('scroll', () => {
+    const doc    = document.documentElement
+    const pct    = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100
+    document.getElementById('progress').style.width = pct + '%'
+  })
+
+  // ── Sidebar active link on scroll ─────────────────────────────
+  const sections = document.querySelectorAll('.article-section[id]')
+  const links    = document.querySelectorAll('.sidebar-nav a')
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => {
+          const href = l.getAttribute('onclick') ?? ''
+          l.classList.toggle('active', href.includes(entry.target.id))
+        })
+      }
+    })
+  }, { rootMargin: '-20% 0px -60% 0px' })
+
+  sections.forEach(s => observer.observe(s))
+</script>
+</body>
+</html>
