@@ -75,10 +75,8 @@ export const metadata: Metadata = {
 
   // Verification — add your codes from Google Search Console etc.
   verification: {
-    google: "REPLACE_WITH_GOOGLE_SEARCH_CONSOLE_CODE",
-    // yandex: "...",
-    // bing:   "...",
-  },
+  google: "w7Mgf2_eptvGR84FaYtJhEN2SHt1MdkZLDaoLHCnKc0",
+},
 
   icons: {
     icon:        "/favicon.ico",
