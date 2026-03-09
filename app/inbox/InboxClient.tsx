@@ -82,7 +82,7 @@ const ConvoRow = memo(function ConvoRow({ conv, userId, onDelete, router }: {
   const p      = conv.other_profile
   // If username looks like an email, don't use it as a display name
   const isEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s ?? "")
-  const name   = p?.full_name || (isEmail(p?.user) ? null : p?.username) || "User"
+  const name = p?.full_name || (isEmail(p?.username ?? "") ? null : p?.username) || "User"
   const unread = userId === conv.buyer_id ? conv.buyer_unread : conv.seller_unread
 
   return (

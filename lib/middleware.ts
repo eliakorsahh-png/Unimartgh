@@ -1,8 +1,8 @@
-// middleware.ts — merge with your existing middleware or create at project root
+// middleware.ts — project root (same level as package.json)
 import { NextRequest, NextResponse } from "next/server"
 import crypto from "crypto"
 
-const SECRET  = process.env.ADMIN_JWT_SECRET ?? "fallback-change-me-in-env"
+const SECRET = process.env.ADMIN_JWT_SECRET ?? "fallback-change-me-in-env"
 
 function verifyAdminToken(token: string): boolean {
   try {
@@ -22,7 +22,8 @@ export async function middleware(req: NextRequest) {
     const token = req.cookies.get("admin_session")?.value
     if (!token || !verifyAdminToken(token)) {
       const res = NextResponse.redirect(new URL("/admin?reason=session_expired", req.url))
-      res.cookies.set("admin_session", "", { maxAge: 0, path: "/admin" })
+      // ✅ path "/" must match the path the cookie was SET with
+      res.cookies.set("admin_session", "", { maxAge: 0, path: "/" })
       return res
     }
   }

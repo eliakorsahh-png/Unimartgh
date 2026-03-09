@@ -1,10 +1,22 @@
 // app/admin/dashboard/page.tsx
 import { cookies } from "next/headers"
-import { jwtVerify } from "jose"
 import { redirect } from "next/navigation"
+import { createHmac } from "crypto"
 import AdminDashboard from "./AdminDashboard"
 
-const JWT_SECRET = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET ?? "fallback-change-me")
+const SECRET = process.env.ADMIN_JWT_SECRET ?? "fallback-change-me-in-env"
+
+function verifyToken(token: string): { staffId: string; name: string; role: string } | null {
+  try {
+    const [header, body, sig] = token.split(".")
+    if (!header || !body || !sig) return null
+    const expected = createHmac("sha256", SECRET).update(`${header}.${body}`).digest("base64url")
+    if (sig !== expected) return null
+    const payload = JSON.parse(Buffer.from(body, "base64url").toString())
+    if (payload.exp < Math.floor(Date.now() / 1000)) return null
+    return { staffId: payload.staffId, name: payload.name, role: payload.role }
+  } catch { return null }
+}
 
 export default async function AdminDashboardPage() {
   const cookieStore = await cookies()
@@ -12,13 +24,8 @@ export default async function AdminDashboardPage() {
 
   if (!token) redirect("/admin?reason=session_expired")
 
-  let admin: { staffId: string; name: string; role: string }
-  try {
-    const { payload } = await jwtVerify(token, JWT_SECRET)
-    admin = { staffId: payload.staffId as string, name: payload.name as string, role: payload.role as string }
-  } catch {
-    redirect("/admin?reason=session_expired")
-  }
+  const admin = verifyToken(token!)
+  if (!admin) redirect("/admin?reason=session_expired")
 
-  return <AdminDashboard initialAdmin={admin} />
+  return <AdminDashboard initialAdmin={admin!} />
 }
